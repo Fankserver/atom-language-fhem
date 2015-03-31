@@ -1,4 +1,81 @@
 'scopeName': 'source.fhem'
 'name': 'Fhem'
 'fileTypes': []
-'patterns': []
+'patterns': [
+	{
+		'include': '#line_comment'
+	}
+	{
+		'captures':
+			'1':
+				'name': 'storage.type.define.fhem'
+			'2':
+				'name': 'entity.name.function.fhem'
+			'3':
+				'name': 'entity.name.type.fhem'
+		'match': '\\b(define) ([^\\s]+) ([^\\s]+)'
+		'name': 'meta.function.fhem'
+	}
+	{
+		'captures':
+			'1':
+				'name': 'storage.type.set.fhem'
+			'2':
+				'name': 'entity.name.function.fhem'
+		'match': '\\b(attr|set) ([^\\s]+)'
+		'name': 'meta.function.fhem'
+	}
+	{
+		'match': '\\b(apptime|attr|backup|check|cmd|cmdalias|configdb|copy|createlog|CULflash|define|delete|deleteattr|deletereading|displayattr|fheminfo|get|getstate|help|IF|include|inform|JsonList|JsonList2|list|modify|notice|quit|re|reload|rename|restore|restart|readcfg|save|set|setdefaultattr|setreading|setstate|shutdown|sleep|trigger|update|usb|version|xmllist)\\b'
+		'name': 'support.function.fhem'
+	}
+	{
+		'begin': '"'
+		'beginCaptures':
+			'0':
+				'name': 'punctuation.definition.string.begin.fhem'
+		'end': '"'
+		'endCaptures':
+			'0':
+				'name': 'punctuation.definition.string.end.fhem'
+		'name': 'string.quoted.fhem'
+	}
+	{
+		'include': '#nested_braces_perl'
+	}
+]
+'repository':
+	'line_comment':
+		'patterns': [
+			{
+				'begin': '(?=#[^#])'
+				'beginCaptures':
+					'0':
+						'name': 'punctuation.whitespace.comment.leading.fhem'
+				'end': '(?!\\G)'
+				'patterns': [
+					{
+						'begin': '#'
+						'beginCaptures':
+							'0':
+								'name': 'punctuation.definition.comment.fhem'
+						'end': '\\n'
+						'name': 'comment.line.number-sign.fhem'
+					}
+				]
+			}
+		]
+	'nested_braces_perl':
+		'begin': '\\{'
+		'captures':
+			'1':
+				'name': 'punctuation.section.scope.perl'
+		'end': '\\}'
+		'patterns': [
+			{
+				'include': 'source.perl'
+			}
+			{
+				'include': '#nested_braces_perl'
+			}
+		]
