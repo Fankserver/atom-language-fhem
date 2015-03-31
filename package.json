@@ -1,0 +1,17 @@
+{
+  "name": "language-fhem",
+  "version": "0.1.0",
+  "description": "Fhem language support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "https://github.com/Fankserver/atom-language-fhem",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fankserver/atom-language-fhem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fankserver/atom-language-fhem/issues"
+  }
+}

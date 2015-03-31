@@ -1,0 +1,6 @@
+# Fhem language support in Atom [![Build Status](https://travis-ci.org/Fankserver/atom-language-fhem.svg?branch=master)](https://travis-ci.org/Fankserver/atom-language-fhem)
+
+Adds syntax highlighting to Fhem files in Atom.
+
+Contributions are greatly appreciated. Please fork this repository and open a
+pull request to add snippets, make grammar tweaks, etc.
