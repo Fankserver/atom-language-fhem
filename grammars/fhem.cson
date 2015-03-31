@@ -48,7 +48,7 @@
 	'line_comment':
 		'patterns': [
 			{
-				'begin': '(?=#[^#])'
+				'begin': '(?=#)'
 				'beginCaptures':
 					'0':
 						'name': 'punctuation.whitespace.comment.leading.fhem'
