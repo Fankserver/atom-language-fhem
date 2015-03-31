@@ -71,6 +71,7 @@
 			'1':
 				'name': 'punctuation.section.scope.perl'
 		'end': '\\}'
+		'contentName': 'source.perl.embedded.fhem'
 		'patterns': [
 			{
 				'include': 'source.perl'

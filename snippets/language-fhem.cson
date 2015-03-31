@@ -1,0 +1,4 @@
+'.source.perl':
+	'Line expander':
+		'prefix': ';'
+		'body': ';;\\'
