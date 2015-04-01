@@ -49,7 +49,7 @@
 		'name': 'string.quoted.fhem'
 	}
 	{
-		'include': '#nested_braces_perl'
+		'include': '#nested_braces_fhem'
 	}
 ]
 'repository':
@@ -69,11 +69,11 @@
 				'name': 'comment.line.number-sign.fhem'
 			}
 		]
-	'nested_braces_perl':
+	'nested_braces_fhem':
 		'begin': '\\{'
 		'captures':
 			'1':
-				'name': 'punctuation.section.scope.perl'
+				'name': 'punctuation.section.scope.fhem'
 		'end': '\\}'
 		'contentName': 'source.perl.embedded.fhem'
 		'patterns': [
@@ -81,7 +81,7 @@
 				'include': 'source.perl'
 			}
 			{
-				'include': '#nested_braces_perl'
+				'include': '#nested_braces_fhem'
 			}
 		]
 	'device_type':
