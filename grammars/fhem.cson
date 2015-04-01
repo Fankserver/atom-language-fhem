@@ -12,7 +12,15 @@
 			'2':
 				'name': 'entity.name.function.fhem'
 			'3':
-				'name': 'entity.name.type.fhem'
+				'patterns': [
+					{
+						'include': '#device_type'
+					}
+					{
+						'match': '.+'
+						'name': 'entity.name.type.fhem'
+					}
+				]
 		'match': '\\b(define) ([^\\s]+) ([^\\s]+)'
 		'name': 'meta.function.fhem'
 	}
@@ -22,11 +30,11 @@
 				'name': 'storage.type.set.fhem'
 			'2':
 				'name': 'entity.name.function.fhem'
-		'match': '\\b(attr|set) ([^\\s]+)'
+		'match': '\\b(attr|set|setreading|setstate) ([^\\s]+)'
 		'name': 'meta.function.fhem'
 	}
 	{
-		'match': '\\b(apptime|attr|backup|check|cmd|cmdalias|configdb|copy|createlog|CULflash|define|delete|deleteattr|deletereading|displayattr|fheminfo|get|getstate|help|IF|include|inform|JsonList|JsonList2|list|modify|notice|quit|re|reload|rename|restore|restart|readcfg|save|set|setdefaultattr|setreading|setstate|shutdown|sleep|trigger|update|usb|version|xmllist)\\b'
+		'match': '\\b(apptime|backup|cmdalias|configdb|copy|createlog|CULflash|define|delete|deleteattr|deletereading|displayattr|fheminfo|get|getstate|help|IF|include|inform|JsonList|JsonList2|list|modify|notice|quit|re|reload|rename|restore|restart|readcfg|save|setdefaultattr|shutdown|sleep|trigger|update|usb|version|xmllist)\\b'
 		'name': 'support.function.fhem'
 	}
 	{
@@ -46,23 +54,19 @@
 ]
 'repository':
 	'line_comment':
+		'begin': '(?=#)'
+		'beginCaptures':
+			'0':
+				'name': 'punctuation.whitespace.comment.leading.fhem'
+		'end': '(?!\\G)'
 		'patterns': [
 			{
-				'begin': '(?=#)'
+				'begin': '#'
 				'beginCaptures':
 					'0':
-						'name': 'punctuation.whitespace.comment.leading.fhem'
-				'end': '(?!\\G)'
-				'patterns': [
-					{
-						'begin': '#'
-						'beginCaptures':
-							'0':
-								'name': 'punctuation.definition.comment.fhem'
-						'end': '\\n'
-						'name': 'comment.line.number-sign.fhem'
-					}
-				]
+						'name': 'punctuation.definition.comment.fhem'
+				'end': '\\n'
+				'name': 'comment.line.number-sign.fhem'
 			}
 		]
 	'nested_braces_perl':
@@ -80,3 +84,8 @@
 				'include': '#nested_braces_perl'
 			}
 		]
+	'device_type':
+		'captures':
+			'1':
+				'name': 'constant.other.device.fhem'
+		'match': '\\b(global|ALL3076|ALL4000T|ALL4027|Alarm|BS|CALVIEW|CM11|CO20|CUL(?:_EM|_FHTTK|_HM|_HOERMANN|_IR|_MAX|_RFR|_TCM97001|_TX|_WS)?|ComfoAir|EC3000|ECMD|ECMDDevice|EDIPLUG|EGPM|EGPM2LAN|EIB|EM|EMEM|EMGZ|EMT7110|EMWZ|ENECSYSGW|ENECSYSINV|ENIGMA2|ESA2000|EnOcean|FBAHA|FBDECT|FHT|FHT8V|FHZ|FRAMEBUFFER|FRITZBOX|FRM|FRM(?:_AD|_I2C|_IN|_LCD|_OUT|_PWM|_RGB|_ROTENC|_SERVO|_STEPPER)|FReplacer|FS20|GDS|HEATRONIC|HMLAN|HMS|HMinfo|HTTPMOD|HUEBridge|HUEDevice|HXB|HXBDevice|I2C(?:_BMP180|_DS1307|_EEPROM|_LCD|_MCP23008|_MCP23017|_MCP342x|_PCA9532|_PCF8574|_SHT21|_TSL2561)|IPCAM|IPWE|IT|Itach(?:_IR|_IRDevice|_Relay)|JSONMETER|Jabber|JeeLink|KM271|KOPP_FC|KOSTALPIKO|KS300|LGTV|LIGHTIFY|LINDY_HDMI_SWITCH|LIRC|LUXTRONIK2|LaCrosse|Level|M232|M232Counter|M232Voltage|MAX|MAXLAN|MPD|MQTT(?:_BRIDGE|_DEVICE)?|MSG|MSGFile|MSGMail|MYSENSORS|MYSENSORS_DEVICE|MilightBridge|MilightDevice|Modbus|ModbusAttr|ModbusSET|NUT|NetIO230B|Netzer|NetzerI2C|ONKYO_AVR|OPENWEATHER|OREGON|OWAD|OWCOUNT|OWDevice|OWFS|OWID|OWLCD|OWMULTI|OWSWITCH|OWServer|OWTEMP|OWTHERM|OWX(?:_ASYNC)?|PCA301|PHILIPS_AUDIO|PHTV|PID20|PIFACE|PIONEERAVR|PIONEERAVRZONE|POKEYS|PROPLANTA|PushNotifier|Pushbullet|Pushover|RFXCOM|RFXMETER|RFXX10REC|RPII2C|RPI_GPIO|Revolt|SCIVT|SHC|SHCdev|SISPM|SIS_PMS|SMARTMON|SML|SOMFY|SONOS|SONOSPLAYER|STACKABLE_CC|STV|SWAP(?:_000000220000000[38])?|SYSMON|TCM|TEK603|THZ|TRX(?:_ELSE|_LIGHT|_SECURITY|_WEATHER)?|TUL|TellStick|Text2Speech|UNIRoll|USBWX|USF1000|VCONTROL|VIERA|VantagePro2|WEBCOUNT|WEBIO|WEBIO_12DIGITAL|WMBUS|WS2000|WS300|WS3600|WWO|Weather|X10|XBMC|XmlList|YAMAHA(?:_AVR|_BD|_NP)|ZWDongle|ZWave|cloneDummy|harmony|km200|netatmo|panStamp|pilight|withings|xxLG7000)\\b'
